@@ -6,10 +6,15 @@ import requests
 
 @shared_task
 def send_order_notification(order_id, user_seq, standard):
+    order_seq = f'{order_id}'
+    if standard == 1:
+        mc_seq = "1"
+    else:
+        mc_seq = "2"
     # 주문 데이터를 기반으로 알림 메세지 데이터 생성
     message = {
-        "mc_seq": "1" if standard == 1 else "2", 
-        "order_seq": f'{order_id}',
+        "mc_seq": mc_seq, 
+        "order_seq": order_seq,
         "user_seq": f'{user_seq}',
         "ms_chk": "false"
     }
