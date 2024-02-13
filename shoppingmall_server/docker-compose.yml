@@ -54,7 +54,7 @@ services:
 
   celery:
     build: .
-    command: celery -A your_app_name worker --loglevel=info
+    command: celery -A newcelery worker --loglevel=info
 
 volumes:
   db-data:
